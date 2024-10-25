@@ -8,7 +8,11 @@ export const FoodCard = ({ data }) => {
   const [search, setSearch] = useState<string>("");
 
   //we filter the data to show the search results
-  const filteredData = data.filter((index) => index.food.Name.includes(search));
+  const filteredData = data.filter(
+    (index) =>
+      index.food.Name.toLowerCase().includes(search) ||
+      index.food.Name.toUpperCase().includes(search)
+  );
   return (
     <>
       <div>
