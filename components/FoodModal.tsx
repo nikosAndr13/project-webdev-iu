@@ -23,22 +23,22 @@ export const FoodModal = ({ modalData }) => {
           </Link>
           <Image
             className="sm:w-[250px] rounded-xl"
-            src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/Food-Images/Healthy/${modalData.url}`}
+            src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/Food-Images/Healthy/${modalData.images.url}`}
             width={200}
             height={200}
-            alt={modalData.food.Name}
+            alt={modalData.Name}
           ></Image>
           <p className="text-lg sm:text-xl ">
-            Calories per 100g: {modalData.food["Calories per 100g"]}
+            Calories per 100g: {modalData["Calories per 100g"]}
           </p>
           <p className="text-lg sm:text-xl ">
-            Protein per 100g: {modalData.food["Protein(g)"]}
+            Protein per 100g: {modalData["Protein(g)"]}
           </p>
           <p className="text-lg sm:text-xl ">
-            Carbs per 100g: {modalData.food["Carbs (g)"]}
+            Carbs per 100g: {modalData["Carbs (g)"]}
           </p>
           <p className="text-lg sm:text-xl ">
-            Fats per 100g: {modalData.food["Fats(g)"]}
+            Fats per 100g: {modalData["Fats(g)"]}
           </p>
         </div>
       </div>

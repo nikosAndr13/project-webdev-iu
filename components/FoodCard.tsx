@@ -8,10 +8,9 @@ export const FoodCard = ({ data }) => {
   const [search, setSearch] = useState<string>("");
 
   //we filter the data to show the search results
-  const filteredData = data.filter(
-    (index) =>
-      index.food.Name.toLowerCase().includes(search) ||
-      index.food.Name.toUpperCase().includes(search)
+  const filteredData = data.filter((food) =>
+    //treat every character as lowercase for effective searching and string comparison
+    food.Name.toLowerCase().includes(search.toLowerCase())
   );
   return (
     <>
@@ -24,13 +23,13 @@ export const FoodCard = ({ data }) => {
         />
       </div>
       <div className="flex flex-wrap gap-4 object-cover justify-center">
-        {filteredData?.map((image) => (
-          <Fragment key={image.food.Name}>
-            <Link href={`/?food=${image.food.id}`} scroll={false}>
+        {filteredData?.map((food) => (
+          <Fragment key={food.Name}>
+            <Link href={`/?food=${food.id}`} scroll={false}>
               <Image
                 className="aspect-[3/3] object-cover scale-[0.8] hover:scale-[1] hover:ease-in-out duration-300 cursor-pointer rounded-xl shadow-xl"
-                src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/Food-Images/Healthy/${image.url}`}
-                alt={image.food.Name}
+                src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/Food-Images/Healthy/${food.images.url}`}
+                alt={food.Name}
                 width={200}
                 height={200}
               />

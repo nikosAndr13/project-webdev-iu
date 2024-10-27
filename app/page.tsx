@@ -12,14 +12,17 @@ export default async function Home({ searchParams }: SearchParamPros) {
   const foodId = searchParams?.food;
 
   //fetch the necessary data with get request
-  let { data, error } = await supabase.from("images").select(
-    `url, food:foods(id, "Calories per 100g", Name, "Protein(g)", "Carbs (g)", "Fats(g)")
+  let { data, error } = await supabase.from("foods").select(
+    `id, Name, "Calories per 100g", "Protein(g)", "Carbs (g)", "Fats(g)", images:images_duplicate(url))
     `
   );
 
+  if (error) {
+    console.log("Unable to fetch data", error);
+  }
   /* find the correct food to pass as a modal based on the id, which we 
   get from the url as a search parameter */
-  const modalData = data?.find((item) => item.food.id == foodId);
+  const modalData = data?.find((food) => food.id == foodId);
 
   return (
     <>
