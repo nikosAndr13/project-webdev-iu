@@ -10,6 +10,6 @@ git clone https://github.com/nikosAndr13/project-webdev-iu
 
 3.  In the root directory of the project create a .env.local file
     (the file, should not be inside any folder and should appear underneath the utils\supabase folder)
-    and add the following env variables included in the first slide of the presentation
+    and add the following env variables included in the GitHub_Credentials.txt file
 
 4.  Then run: npm run dev
